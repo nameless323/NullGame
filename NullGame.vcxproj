@@ -23,7 +23,7 @@
     <ProjectGuid>{FF4E1AF5-390A-4C69-AFE8-B987ABFDBCF3}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>NullGame</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
