@@ -5,12 +5,12 @@
 
 #include "stdafx.h"
 
-#include <Core\KiotoEngine.h>
+#include <Core/KiotoEngine.h>
 
 #include <windows.h>
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance, PSTR cmdLine, int nCmdShow)
 {
-    Kioto::KiotoMain(hInstance, prevInstance, cmdLine, nCmdShow);
+    Kioto::KiotoMain(hInstance, prevInstance, cmdLine, nCmdShow, L"Kioto game");
     return 0;
 }
