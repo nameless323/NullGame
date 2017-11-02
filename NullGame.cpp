@@ -5,12 +5,43 @@
 
 #include "stdafx.h"
 
-#include <Core/KiotoEngine.h>
+#include <Kioto.h>
 
 #include <windows.h>
 
+class TestScene : public Kioto::Scene
+{
+public:
+    ~TestScene()
+    {
+    }
+};
+
+class TestSceneSystem : public Kioto::SceneSystem
+{
+public:
+    void Update(float32 dt) override
+    {
+    }
+    ~TestSceneSystem()
+    {
+    }
+};
+
+void OnEngineInit()
+{
+    Kioto::Scene* scene = new TestScene();
+    scene->AddSystem(new TestSceneSystem{});
+    Kioto::SetScene(scene);
+}
+
+void OnEngineShutdown()
+{
+    OutputDebugStringA("Engine shutdown");
+}
+
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance, PSTR cmdLine, int nCmdShow)
 {
-    Kioto::KiotoMain(hInstance, prevInstance, cmdLine, nCmdShow, L"Kioto game");
+    Kioto::KiotoMain(hInstance, prevInstance, cmdLine, nCmdShow, L"Kioto game", OnEngineInit, OnEngineShutdown);
     return 0;
 }
