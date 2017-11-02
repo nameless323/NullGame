@@ -9,11 +9,30 @@
 
 #include <windows.h>
 
+class TestScene : public Kioto::Scene
+{
+public:
+    ~TestScene()
+    {
+    }
+};
+
+class TestSceneSystem : public Kioto::SceneSystem
+{
+public:
+    void Update(float32 dt) override
+    {
+    }
+    ~TestSceneSystem()
+    {
+    }
+};
+
 void OnEngineInited()
 {
-    Kioto::Scene* scene = new Kioto::Scene();
+    Kioto::Scene* scene = new TestScene();
+    scene->AddSystem(new TestSceneSystem{});
     Kioto::SetScene(scene);
-    OutputDebugStringA("init engine");
 }
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance, PSTR cmdLine, int nCmdShow)
