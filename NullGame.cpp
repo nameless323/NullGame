@@ -20,6 +20,14 @@ public:
 class TestSceneSystem : public Kioto::SceneSystem
 {
 public:
+    void OnEntityAdd(Kioto::Entity* entity) override
+    {
+
+    }
+    void OnEntityRemove(Kioto::Entity* entity) override
+    {
+
+    }
     void Update(float32 dt) override
     {
     }
