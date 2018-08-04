@@ -67,8 +67,4 @@ void OnEngineShutdown()
 {
 }
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance, PSTR cmdLine, int nCmdShow)
-{
-    Kioto::KiotoMain(hInstance, prevInstance, cmdLine, nCmdShow, L"Kioto game", OnEngineInit, OnEngineShutdown);
-    return 0;
-}
+RUN_KIOTO;
