@@ -35,7 +35,25 @@ public:
     }
     void Update(float32 dt) override
     {
-        teapotTransform->SetWorldPosition({ left, 0.0f, fwd });
+        static float up = 0.0f;
+        /*
+        static int counter = 0;
+        ImGui::Begin("From kioto game");                          // Create a window called "Hello, world!" and append into it.
+
+        ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
+
+        ImGui::SliderFloat("float", &up, -10.0f, 10.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+
+        if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+            counter++;
+        ImGui::SameLine();
+        ImGui::Text("counter = %d", counter);
+
+        ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+        ImGui::End();
+        */
+
+        teapotTransform->SetWorldPosition({ left, up, fwd });
         std::stringstream ss;
         //auto mouse = Kioto::Input::GetMouseRelativePosition(); //<-- check all buttons
         //    ss << __FILE__ << "(" << __LINE__ << ")" << " x: " << mouse.x << " | y: " << mouse.y << std::endl;
