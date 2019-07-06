@@ -45,7 +45,7 @@ public:
         }
         static float up = 0.0f;
 
-        //teapotTransform->SetWorldPosition({ left, up, fwd });
+        teapotTransform->SetWorldPosition({ left, up, fwd });
         std::stringstream ss;
         //auto mouse = Kioto::Input::GetMouseRelativePosition(); //<-- check all buttons
         //    ss << __FILE__ << "(" << __LINE__ << ")" << " x: " << mouse.x << " | y: " << mouse.y << std::endl;
@@ -121,7 +121,7 @@ void OnEngineInit()
     scene->AddEntity(teapotEntity);
 
     //Kioto::SaveScene("C:\\Repos\\NullGame\\scenes\\scene.ksc");*/
-    Kioto::LoadScene("C:\\Repos\\NullGame\\scenes\\scene.ksc");
+    Kioto::LoadScene("C:\\Repos\\NullGame\\scenes\\scene1.ksc");
     Kioto::Scene* scene = Kioto::GetScene();
     scene->AddSystem(new TestSceneSystem{});
     Kioto::Entity* teapot = scene->FindEntity("Teapot");
