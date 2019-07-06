@@ -1,0 +1,41 @@
+Version: 0.0900000036
+Scene:
+  SceneName: Main scene
+  Entities:
+    Entity:
+      Name: Camera
+      Components:
+        Component:
+          Type: 9797664509068339094  # TransformComponent
+          Data:
+            ToWorld: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+            ToParent: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+            ToModel: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+            WorldPosition: [0, 0, -5]
+            WorldRotation: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+        Component:
+          Type: 13209209574413295037  # CameraComponent
+          Data:
+            Cam.View: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+            Cam.FOV_Y: 1.04719758
+            Cam.Near: 0.00999999978
+            Cam.Far: 100
+            Cam.Aspect: 1.33333337
+            Cam.Ortho: false
+            IsMain: true
+    Entity:
+      Name: Teapot
+      Components:
+        Component:
+          Type: 9797664509068339094  # TransformComponent
+          Data:
+            ToWorld: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+            ToParent: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+            ToModel: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+            WorldPosition: [0, 0, 2]
+            WorldRotation: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+        Component:
+          Type: 5352011725353660904  # RenderComponent
+          Data:
+            MatPath: Materials\Test.mt
+            MeshPath: Models\Teapot.fbx
