@@ -12,13 +12,15 @@
 class TestScene : public Kioto::Scene
 {
 public:
+    TestScene(std::string name)
+        : Scene(name)
+    {
+    }
+
     ~TestScene()
     {
     }
 };
-
-Kioto::TransformComponent* cameraTransform = new Kioto::TransformComponent();
-Kioto::CameraComponent* cam;
 
 Kioto::TransformComponent* teapotTransform = new Kioto::TransformComponent();
 
@@ -35,23 +37,13 @@ public:
     }
     void Update(float32 dt) override
     {
+        if (Kioto::Input::GetIsButtonHeldDown(Kioto::eKeyCode::KeyCodeControl) &&
+            Kioto::Input::GetButtonUp(Kioto::eKeyCode::KeyCodeS))
+        {
+            Kioto::SaveScene("C:\\Repos\\NullGame\\scenes\\scene1.ksc");
+            return;
+        }
         static float up = 0.0f;
-        /*
-        static int counter = 0;
-        ImGui::Begin("From kioto game");                          // Create a window called "Hello, world!" and append into it.
-
-        ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
-
-        ImGui::SliderFloat("float", &up, -10.0f, 10.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-
-        if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-            counter++;
-        ImGui::SameLine();
-        ImGui::Text("counter = %d", counter);
-
-        ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-        ImGui::End();
-        */
 
         teapotTransform->SetWorldPosition({ left, up, fwd });
         std::stringstream ss;
@@ -100,7 +92,7 @@ public:
 
 void OnEngineInit()
 {
-    Kioto::Scene* scene = new TestScene();
+    /*Kioto::Scene* scene = new TestScene("Main scene");
     Kioto::SetScene(scene);
 
     Kioto::Entity* cameraEntity = new Kioto::Entity();
@@ -127,6 +119,13 @@ void OnEngineInit()
     teapotEntity->AddComponent(teapotRenderer);
 
     scene->AddEntity(teapotEntity);
+
+    //Kioto::SaveScene("C:\\Repos\\NullGame\\scenes\\scene.ksc");*/
+    Kioto::LoadScene("C:\\Repos\\NullGame\\scenes\\scene1.ksc");
+    Kioto::Scene* scene = Kioto::GetScene();
+    scene->AddSystem(new TestSceneSystem{});
+    Kioto::Entity* teapot = scene->FindEntity("Teapot");
+    teapotTransform = teapot->GetTransform();
 }
 
 void OnEngineShutdown()
