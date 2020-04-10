@@ -40,10 +40,10 @@ public:
         if (Kioto::Input::GetIsButtonHeldDown(Kioto::eKeyCode::KeyCodeControl) &&
             Kioto::Input::GetButtonUp(Kioto::eKeyCode::KeyCodeS))
         {
-            Kioto::SaveScene("C:\\Repos\\NullGame\\scenes\\scene1.ksc");
+            //Kioto::SaveScene("C:\\Repos\\NullGame\\scenes\\scene.ksc");
             return;
         }
-        static float up = 0.0f;
+        static float up = -2.0f;
 
         teapotTransform->SetWorldPosition({ left, up, fwd });
         std::stringstream ss;
@@ -121,10 +121,10 @@ void OnEngineInit()
     scene->AddEntity(teapotEntity);
 
     //Kioto::SaveScene("C:\\Repos\\NullGame\\scenes\\scene.ksc");*/
-    Kioto::LoadScene("C:\\Repos\\NullGame\\scenes\\scene1.ksc");
+    Kioto::LoadScene("C:\\Repos\\NullGame\\scenes\\scene.ksc");
     Kioto::Scene* scene = Kioto::GetScene();
     scene->AddSystem(new TestSceneSystem{});
-    Kioto::Entity* teapot = scene->FindEntity("Teapot");
+    Kioto::Entity* teapot = scene->FindEntity("TestRenderObject");
     teapotTransform = teapot->GetTransform();
 }
 

@@ -24,7 +24,7 @@ Scene:
             Cam.Ortho: false
             IsMain: true
     Entity:
-      Name: Teapot
+      Name: TestRenderObject
       Components:
         Component:
           Type: 9797664509068339094  # TransformComponent
@@ -38,4 +38,4 @@ Scene:
           Type: 5352011725353660904  # RenderComponent
           Data:
             MatPath: Materials\Test.mt
-            MeshPath: Models\Teapot.fbx
+            MeshPath: Models\Plane.glb
