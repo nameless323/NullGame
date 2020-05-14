@@ -61,23 +61,23 @@ public:
             thisFrameOffset.y = mouseRelativePosition.y * mouseAccel;
         }
 
-        Matrix4 worldRotation = Matrix4::Identity;
-
-        static float32 xAccum = 0; 
-        static float32 yAccum = 0;
+        float32 x = 0;
+        float32 y = 0;
         if (scroll == eMouseWheelScroll::ScrollNone && Input::GetMouseHeldDown(Kioto::eMouseCodes::MouseRight))
         {
-            xAccum += mouseRelativePosition.y * mouseRotationAccel;
-            yAccum += mouseRelativePosition.x * mouseRotationAccel;
+            x = Math::DegToRad(-mouseRelativePosition.x * mouseRotationAccel);
+            y = Math::DegToRad(-mouseRelativePosition.y * mouseRotationAccel);
         }
-        Matrix4 xRot = Matrix4::BuildRotationX(Kioto::Math::DegToRad(xAccum));
-        Matrix4 yRot = Matrix4::BuildRotationY(Kioto::Math::DegToRad(yAccum));
-        worldRotation = yRot * xRot;
+
+        Vector3 right = cameraTransform->Right();
+        Quaternion upRot({ 0.0f, 1.0f, 0.0f}, x);
+        Quaternion rightRot(right, y);
+        Quaternion frameRot = rightRot * upRot;
+        Quaternion finalRot = cameraTransform->GetWorldRotation() * frameRot;
 
         Vector3 worldPos = cameraTransform->TransformPointToWorld(thisFrameOffset);
-
         cameraTransform->SetWorldPosition(worldPos);
-        cameraTransform->SetWorldRotation(worldRotation);
+        cameraTransform->SetWorldRotation(finalRot);
     }
     ~TestSceneSystem()
     {

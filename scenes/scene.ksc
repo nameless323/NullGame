@@ -8,11 +8,8 @@ Scene:
         Component:
           Type: 9797664509068339094  # TransformComponent
           Data:
-            ToWorld: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
-            ToParent: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
-            ToModel: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
             WorldPosition: [0, 0, -5]
-            WorldRotation: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+            WorldRotation: [1, 0, 0, 0]
         Component:
           Type: 13209209574413295037  # CameraComponent
           Data:
@@ -29,11 +26,8 @@ Scene:
         Component:
           Type: 9797664509068339094  # TransformComponent
           Data:
-            ToWorld: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
-            ToParent: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
-            ToModel: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
             WorldPosition: [0, 0, 2]
-            WorldRotation: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+            WorldRotation: [1, 0, 0, 0]
         Component:
           Type: 5352011725353660904  # RenderComponent
           Data:
@@ -45,11 +39,8 @@ Scene:
         Component:
           Type: 9797664509068339094  # TransformComponent
           Data:
-            ToWorld: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
-            ToParent: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
-            ToModel: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
             WorldPosition: [-2, -2, 2]
-            WorldRotation: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+            WorldRotation: [1, 0, 0, 0]
         Component:
           Type: 5352011725353660904  # RenderComponent
           Data:
@@ -61,11 +52,8 @@ Scene:
         Component:
           Type: 9797664509068339094  # TransformComponent
           Data:
-            ToWorld: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
-            ToParent: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
-            ToModel: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
             WorldPosition: [3, 2, 2]
-            WorldRotation: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+            WorldRotation: [1, 0, 0, 0]
         Component:
           Type: 5352011725353660904  # RenderComponent
           Data:
@@ -77,11 +65,8 @@ Scene:
         Component:
           Type: 9797664509068339094  # TransformComponent
           Data:
-            ToWorld: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
-            ToParent: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
-            ToModel: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
             WorldPosition: [2, -2, 2]
-            WorldRotation: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+            WorldRotation: [1, 0, 0, 0]
         Component:
           Type: 5352011725353660904  # RenderComponent
           Data:
