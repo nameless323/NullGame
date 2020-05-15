@@ -76,6 +76,18 @@ public:
         Quaternion finalRot = cameraTransform->GetWorldRotation() * frameRot;
 
         Vector3 worldPos = cameraTransform->TransformPointToWorld(thisFrameOffset);
+
+        if (Input::GetIsButtonHeldDown(Kioto::eKeyCode::KeyCodeControl) && Input::GetMouseHeldDown(Kioto::eMouseCodes::MouseRight))
+        {
+            x = Math::DegToRad(mouseRelativePosition.x * mouseRotationAccel);
+            y = Math::DegToRad(mouseRelativePosition.y * mouseRotationAccel);
+            Vector3 rotateAround = cameraTransform->GetWorldPosition() + cameraTransform->Fwd() * 5.0f;
+            worldPos = Math::TransformHelpers::RotateAround(*cameraTransform, rotateAround, x, y);
+            Vector3 up = Vector3::Up;
+            Matrix4 lookAt = Matrix4::BuildLookAt(worldPos, rotateAround, up);
+            finalRot = Quaternion::FromMatrix(lookAt.Tranposed());
+        }
+
         cameraTransform->SetWorldPosition(worldPos);
         cameraTransform->SetWorldRotation(finalRot);
     }
