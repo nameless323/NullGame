@@ -10,6 +10,8 @@
 #include <sstream>
 #include <iostream>
 
+#include "Gameplay/CameraMovementController.h"
+
 class TestScene : public Kioto::Scene
 {
 public:
@@ -22,8 +24,10 @@ public:
     {
     }
 };
+using namespace NullGame;
 
-Kioto::TransformComponent* cameraTransform = new Kioto::TransformComponent();
+Kioto::TransformComponent* cameraTransform = nullptr;
+NullGame::CameraMovementController* cameraMovementController = nullptr;
 
 class TestSceneSystem : public Kioto::SceneSystem
 {
@@ -39,57 +43,7 @@ public:
     void Update(float32 dt) override
     {
         using namespace Kioto;
-
-        Vector3 thisFrameOffset;
-        float32 mouseAccel = 0.02f;
-        float32 mouseRotationAccel = 0.2f;
-
-        std::stringstream ss;
-        eMouseWheelScroll scroll = Input::GetMouseWheel();
-        if (scroll == eMouseWheelScroll::ScrollUp)
-            thisFrameOffset.z += 0.5f;
-        else if (scroll == eMouseWheelScroll::ScrollDown)
-            thisFrameOffset.z -= 0.5f;
-
-        if (Input::GetIsButtonHeldDown(eKeyCode::KeyCodeControl))
-            mouseAccel *= 10;
-
-        Vector2i mouseRelativePosition = Input::GetMouseRelativePosition();
-        if (Input::GetMouseHeldDown(eMouseCodes::MouseMiddle))
-        {
-            thisFrameOffset.x = mouseRelativePosition.x * -mouseAccel;
-            thisFrameOffset.y = mouseRelativePosition.y * mouseAccel;
-        }
-
-        float32 x = 0;
-        float32 y = 0;
-        if (scroll == eMouseWheelScroll::ScrollNone && Input::GetMouseHeldDown(Kioto::eMouseCodes::MouseRight))
-        {
-            x = Math::DegToRad(-mouseRelativePosition.x * mouseRotationAccel);
-            y = Math::DegToRad(-mouseRelativePosition.y * mouseRotationAccel);
-        }
-
-        Vector3 right = cameraTransform->Right();
-        Quaternion upRot({ 0.0f, 1.0f, 0.0f}, x);
-        Quaternion rightRot(right, y);
-        Quaternion frameRot = rightRot * upRot;
-        Quaternion finalRot = cameraTransform->GetWorldRotation() * frameRot;
-
-        Vector3 worldPos = cameraTransform->TransformPointToWorld(thisFrameOffset);
-
-        if (Input::GetIsButtonHeldDown(Kioto::eKeyCode::KeyCodeControl) && Input::GetMouseHeldDown(Kioto::eMouseCodes::MouseRight))
-        {
-            x = Math::DegToRad(mouseRelativePosition.x * mouseRotationAccel);
-            y = Math::DegToRad(mouseRelativePosition.y * mouseRotationAccel);
-            Vector3 rotateAround = cameraTransform->GetWorldPosition() + cameraTransform->Fwd() * 5.0f;
-            worldPos = Math::TransformHelpers::RotateAround(*cameraTransform, rotateAround, x, y);
-            Vector3 up = Vector3::Up;
-            Matrix4 lookAt = Matrix4::BuildLookAt(worldPos, rotateAround, up);
-            finalRot = Quaternion::FromMatrix(lookAt.Tranposed());
-        }
-
-        cameraTransform->SetWorldPosition(worldPos);
-        cameraTransform->SetWorldRotation(finalRot);
+        cameraMovementController->Update(dt);
     }
     ~TestSceneSystem()
     {
@@ -109,10 +63,12 @@ void OnEngineInit()
     scene->AddSystem(new TestSceneSystem{});
     Kioto::Entity* cameraEntity = scene->FindEntity("Camera");
     cameraTransform = cameraEntity->GetTransform();
+    cameraMovementController = new CameraMovementController(cameraTransform, 0.02f, 0.2f, 0.5f);
 }
 
 void OnEngineShutdown()
 {
+    delete cameraMovementController;
 }
 
 RUN_KIOTO;
