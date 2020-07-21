@@ -72,3 +72,18 @@ Scene:
           Data:
             MatPath: Materials\UnlitRandMbrick.mt
             MeshPath: Models\Torus.glb
+    Entity:
+      Name: DirectionalLight
+      Components:
+        Component:
+          Type: 9797664509068339094  # TransformComponent
+          Data:
+            WorldPosition: [0, 0, 0]
+            WorldRotation: [1, 0, 0, 0]
+        Component:
+          Type: 4057566390273757802 # LightComponent
+          Data:
+            LightType: 0
+            LightDir: [0, -1, 0]
+            LightColor: [1, 0, 0]
+            LightAtten: 0
