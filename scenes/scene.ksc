@@ -85,5 +85,5 @@ Scene:
           Data:
             LightType: 0
             LightDir: [0, -1, 0]
-            LightColor: [1, 0, 0]
+            LightColor: [1, 0, 0, 1]
             LightAtten: 0
