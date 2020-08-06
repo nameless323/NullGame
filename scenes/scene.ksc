@@ -32,7 +32,7 @@ Scene:
           Type: 5352011725353660904  # RenderComponent
           Data:
             MatPath: Materials\UnlitRandMbrick.mt
-            MeshPath: Models\Cube.glb
+            MeshPath: Models\Sphere.glb
     Entity:
       Name: Sphere
       Components:
@@ -84,6 +84,6 @@ Scene:
           Type: 4057566390273757802 # LightComponent
           Data:
             LightType: 0
-            LightDir: [0, -1, 0]
-            LightColor: [1, 0, 0, 1]
+            LightDir: [1, -1, 0]
+            LightColor: [0.8, 1, 0.9, 1]
             LightAtten: 0
