@@ -99,7 +99,7 @@ Scene:
             LightType: 0
             LightDir: [0.70710678, -0.70710678, 0]
             LightColor: [0.8, 1, 0.9, 1]
-            LightAtten: [1.0, 0.35, 0.44, 13]
+            LightData: [1.0, 0.35, 0.44, 13]
     Entity:
       Name: PointLight
       Components:
@@ -114,7 +114,7 @@ Scene:
             LightType: 1
             LightDir: [0, 0, 0]
             LightColor: [0.8, 0.2, 0.9, 1]
-            LightAtten: [1.0, 0.35, 0.44, 13]
+            LightData: [1.0, 0.35, 0.44, 13]
     Entity:
       Name: SpotLight
       Components:
@@ -129,4 +129,4 @@ Scene:
             LightType: 2
             LightDir: [0, -1, 0]
             LightColor: [0.0, 0.0, 0.9, 1]
-            LightAtten: [0.174533, 0.349066, 0.44, 13]
+            LightData: [0.174533, 0.349066, 0.44, 13]

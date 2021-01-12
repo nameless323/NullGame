@@ -5,11 +5,12 @@
 namespace NullGame
 {
 
-CameraMovementController::CameraMovementController(Kioto::TransformComponent* cameraTransform, float32 moveAcceleration, float32 rotationAcceleration, float32 fwdMoveAcceleration)
+CameraMovementController::CameraMovementController(Kioto::TransformComponent* cameraTransform, float32 moveAcceleration, float32 rotationAcceleration, float32 fwdMoveAcceleration, float32 keyboardAcceleration)
     : m_cameraTransform(cameraTransform)
     , m_moveAcceleration(moveAcceleration)
     , m_rotationAcceleration(rotationAcceleration)
     , m_fwdMoveAcceleration(fwdMoveAcceleration)
+    , m_keyboardAcceleration(keyboardAcceleration)
 {
 }
 
@@ -18,10 +19,11 @@ void CameraMovementController::Update(float32 dt)
     Kioto::Vector3 thisFrameOffset;
 
     Kioto::eMouseWheelScroll scroll = Kioto::Input::GetMouseWheel();
-    if (scroll == Kioto::eMouseWheelScroll::ScrollUp)
-        thisFrameOffset.z += m_fwdMoveAcceleration;
-    else if (scroll == Kioto::eMouseWheelScroll::ScrollDown)
-        thisFrameOffset.z -= m_fwdMoveAcceleration;
+    thisFrameOffset.z += m_fwdMoveAcceleration * (scroll == Kioto::eMouseWheelScroll::ScrollUp)
+        + m_keyboardAcceleration * (Kioto::Input::GetIsButtonHeldDown(Kioto::eKeyCode::KeyCodeW));
+
+    thisFrameOffset.z -= m_fwdMoveAcceleration * (scroll == Kioto::eMouseWheelScroll::ScrollDown)
+        + m_keyboardAcceleration * (Kioto::Input::GetIsButtonHeldDown(Kioto::eKeyCode::KeyCodeS));
 
     Kioto::Vector2i mouseRelativePosition = Kioto::Input::GetMouseRelativePosition();
     if (Kioto::Input::GetMouseHeldDown(Kioto::eMouseCodes::MouseMiddle))
@@ -29,6 +31,8 @@ void CameraMovementController::Update(float32 dt)
         thisFrameOffset.x = mouseRelativePosition.x * -m_moveAcceleration;
         thisFrameOffset.y = mouseRelativePosition.y * m_moveAcceleration;
     }
+    thisFrameOffset.x += m_keyboardAcceleration * (Kioto::Input::GetIsButtonHeldDown(Kioto::eKeyCode::KeyCodeD));
+    thisFrameOffset.x -= m_keyboardAcceleration * (Kioto::Input::GetIsButtonHeldDown(Kioto::eKeyCode::KeyCodeA));
 
     float32 x = 0;
     float32 y = 0;

@@ -63,7 +63,7 @@ void OnEngineInit()
     scene->AddSystem(new TestSceneSystem{});
     Kioto::Entity* cameraEntity = scene->FindEntity("Camera");
     cameraTransform = cameraEntity->GetTransform();
-    cameraMovementController = new CameraMovementController(cameraTransform, 0.02f, 0.2f, 0.5f);
+    cameraMovementController = new CameraMovementController(cameraTransform, 0.02f, 0.2f, 0.5f, 0.01f);
 }
 
 void OnEngineShutdown()
